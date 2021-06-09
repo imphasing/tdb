@@ -21,6 +21,7 @@ impl Tdb {
 
                 segment.load().expect("unable to load segment");
 
+                // load the data chunk from the segment as string characters following the information from the index
                 Ok((&segment.content[data.offset as usize..(data.offset + data.length) as usize]).to_string())
             }
             None => Err("key not found")
